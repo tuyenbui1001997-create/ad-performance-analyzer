@@ -48,12 +48,10 @@ public class AdPerformanceAnalyzer {
 		}
 
 		String inputFile = args[0];
-		String method = args.length > 1 ? args[1] : "sqlite";
 
 		try {
 			System.out.println("Processing file: " + inputFile);
-			System.out.println("Method: " + method);
-			processSQLite(inputFile);
+			process(inputFile);
 			System.out.println("Processing complete!");
 
 		} catch (Exception e) {
@@ -63,7 +61,7 @@ public class AdPerformanceAnalyzer {
 		}
 	}
 
-	private static void processSQLite(String inputFile) throws Exception {
+	private static void process(String inputFile) throws Exception {
 		String dbFile = "campaign_data.db";
 		Files.deleteIfExists(Paths.get(dbFile));
 

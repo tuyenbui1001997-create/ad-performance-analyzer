@@ -93,12 +93,12 @@ javac -cp ".;sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer.java
 
 **Linux/Mac:**
 ```bash
-java -cp ".:sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer ad_data.csv.csv
+java -cp ".:sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer ad_data.csv
 ```
 
 **Windows:**
 ```cmd
-java -cp ".;sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer ad_data.csv.csv
+java -cp ".;sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer ad_data.csv
 ```
 
 ### 3. Check Output Files
