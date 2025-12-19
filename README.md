@@ -70,7 +70,7 @@ ad-performance-analyzer/
 ├── AdPerformanceAnalyzer.java
 ├── CampaignDBInspector.java
 ├── sqlite-jdbc-3.51.1.0.jar
-└── your_data.csv (your input file)
+└── ad_data.csv (your input file)
 ```
 
 ---
@@ -93,12 +93,12 @@ javac -cp ".;sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer.java
 
 **Linux/Mac:**
 ```bash
-java -cp ".:sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer your_data.csv sqlite
+java -cp ".:sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer ad_data.csv.csv
 ```
 
 **Windows:**
 ```cmd
-java -cp ".;sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer your_data.csv sqlite
+java -cp ".;sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer ad_data.csv.csv
 ```
 
 ### 3. Check Output Files
@@ -114,13 +114,13 @@ The application generates two CSV files:
 ### Basic Command
 
 ```bash
-java -cp ".:sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer <input_file> sqlite
+java -cp ".:sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer <input_file>
 ```
 
 ### With Increased Memory (for very large files)
 
 ```bash
-java -Xmx2g -cp ".:sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer input.csv sqlite
+java -Xmx2g -cp ".:sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer input.csv
 ```
 
 ### Memory Options
@@ -251,7 +251,7 @@ CAMP_012,35000,1750,1050.00,350,0.050000,3.00
 **Solution:**
 ```bash
 # Make sure you include the jar in classpath
-java -cp ".:sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer input.csv sqlite
+java -cp ".:sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer ad_data.csv
 ```
 
 ### Error: "OutOfMemoryError"
@@ -261,7 +261,7 @@ java -cp ".:sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer input.csv sqlite
 **Solution:**
 ```bash
 # Increase heap size
-java -Xmx2g -cp ".:sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer input.csv sqlite
+java -Xmx2g -cp ".:sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer ad_data.csv
 ```
 
 ### Error: "No space left on device"
@@ -279,11 +279,11 @@ java -Xmx2g -cp ".:sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer input.csv sql
 **Solution:**
 ```bash
 # Use absolute path
-java -cp ".:sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer /full/path/to/input.csv sqlite
+java -cp ".:sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer /full/path/to/ad_data.csv
 
 # Or ensure you're in the correct directory
 cd /path/to/data
-java -cp ".:sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer input.csv sqlite
+java -cp ".:sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer ad_data.csv
 ```
 
 ### Slow Performance
@@ -377,7 +377,7 @@ HAVING CTR > 0.05;
 
 for file in data/*.csv; do
     echo "Processing $file"
-    java -cp ".:sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer "$file" sqlite
+    java -cp ".:sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer "$file"
     
     # Rename output files
     mv top_10_highest_ctr.csv "ctr_$(basename $file)"
@@ -403,10 +403,10 @@ chmod +x process_all.sh
 javac -cp ".:sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer.java
 
 # Run
-java -cp ".:sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer input.csv sqlite
+java -cp ".:sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer ad_data.csv
 
 # Run with more memory
-java -Xmx2g -cp ".:sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer input.csv sqlite
+java -Xmx2g -cp ".:sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer ad_data.csv
 ```
 
 **Windows:**
@@ -415,10 +415,10 @@ java -Xmx2g -cp ".:sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer input.csv sql
 javac -cp ".;sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer.java
 
 # Run
-java -cp ".;sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer input.csv sqlite
+java -cp ".;sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer ad_data.csv
 
 # Run with more memory
-java -Xmx2g -cp ".;sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer input.csv sqlite
+java -Xmx2g -cp ".;sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer ad_data.csv
 ```
 
 ### Example Session
@@ -429,7 +429,7 @@ AdPerformanceAnalyzer.java  advertising_data.csv  sqlite-jdbc-3.51.1.0.jar
 
 $ javac -cp ".:sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer.java
 
-$ java -cp ".:sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer advertising_data.csv sqlite
+$ java -cp ".:sqlite-jdbc-3.51.1.0.jar" AdPerformanceAnalyzer advertising_data.csv
 Processing file: advertising_data.csv
 Method: sqlite
 Loaded 10000 lines...
@@ -467,6 +467,3 @@ This is a utility application for data processing. Use at your own discretion.
 6. **Validate CSV format** before processing large files
 
 ---
-
-**Last Updated:** December 2025  
-**Version:** 1.0
